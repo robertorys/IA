@@ -1,0 +1,28 @@
+problema: 3 jarras (x, y, z)
+    -Jarra x, 12 galeones.
+    -Jarra y, 8 galeones.
+    -Jarra z, 3 galeones.
+conseguir 1 galeón llenando o vaciar una jarra.
+
+Estado inicial: (0, 0, 0).
+Estados: Combinaciones posibles de (x, y, z) -> {(0, 0, 0);(12, 0, 0);(0, 8, 0);(0, 0, 3);...}
+Acciones: Llenar, vaciar y pasar agua de un jarrón a otro
+Modelo de transición: 
+    Sea 0 <= x >= 12 ^ 0 <= y >= 8 ^ 0 <= z >= 3
+
+    si x = k -> x = 12,
+    si y = k -> y = 8,
+    si z = k -> z = 3,
+    
+    si x = r -> x = 0, 
+    si y = r -> y = 0, 
+    si z = r -> z = 0, 
+    
+    Sea p, q ∈ Z^+ (enteros positivos)
+        A = p, B = q, Lb = Cb - q, sea Cb la constante de medición del jarro
+        si Lb <  p -> (A = p - Lb) ^ (B = q + Lb)
+        si Lb >= p -> (B = q + p) ^ (A = 0)
+    Donde A es la jarra que va a pasar el agua a B.
+
+Prueba de meta: Conseguir (1, y, z) ó (x, 1, z) ó (x, y, 1)
+función de coste: movimientos hechos, cada movimiento tiene coste de 1.
